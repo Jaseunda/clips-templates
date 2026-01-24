@@ -1,0 +1,19 @@
+{
+  "name": "Template",
+  "slug": "template",
+  "version": "1.0.0",
+  "build": "1",
+  "bundleId": "com.relay.template",
+  "description": "A new Relay application.",
+  "author": "Anonymous",
+  "icon": "assets/icon.png",
+  "categories": [
+    "Utilities"
+  ],
+  "minRelayVersion": "1.0.0",
+  "permissions": [],
+  "theme": {
+    "accentColor": "#007AFF",
+    "mode": "system"
+  }
+}
