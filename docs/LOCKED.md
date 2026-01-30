@@ -23,15 +23,15 @@ The `Locked` component (`src/locked/index.tsx`) wraps your entire application an
 
 ```tsx
 import { Locked } from './locked';
+import App from './App';
 
-export default function App() {
-  return (
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
     <Locked>
-      {/* Your app content */}
-      <YourAppContent />
+      <App />
     </Locked>
-  );
-}
+  </React.StrictMode>,
+);
 ```
 
 ## Configuration
@@ -84,7 +84,7 @@ During the build process (`relay build`), the following validations occur:
 
 ### Build Failure Examples
 ```bash
-ERROR: Locked component not found in App.tsx
+ERROR: Locked component not found in src/locked/index.tsx
 ERROR: showCloseButton must be true for production builds
 ERROR: Invalid Locked component configuration
 ```
@@ -136,12 +136,10 @@ The Locked component reserves header space:
 ```tsx
 function MyApp() {
   return (
-    <Locked>
-      <div className="min-h-screen">
-        {/* Your app content - header space already accounted for */}
-        <MainContent />
-      </div>
-    </Locked>
+    <div className="min-h-screen">
+       {/* Your app content - header space already accounted for by Locked in main.tsx */}
+       <MainContent />
+    </div>
   );
 }
 ```
@@ -159,7 +157,7 @@ Override default header styling:
 
 ### Security
 - **Always keep `showCloseButton: true`** in production
-- **Never remove the Locked wrapper** from App.tsx
+- **Never remove the Locked wrapper** from main.tsx
 - **Test close functionality** before deployment
 - **Validate host communication** for custom features
 
@@ -204,17 +202,17 @@ Override default header styling:
 ### From Basic Apps
 If migrating an existing app:
 
-1. **Add Locked wrapper** to `src/App.tsx`:
+1. **Add Locked wrapper** to `src/main.tsx`:
    ```tsx
    import { Locked } from './locked';
 
-   export default function App() {
-     return (
+   ReactDOM.createRoot(document.getElementById('root')!).render(
+     <React.StrictMode>
        <Locked>
-         <YourExistingApp />
+         <App />
        </Locked>
-     );
-   }
+     </React.StrictMode>,
+   );
    ```
 
 2. **Update config.ts** with window settings
