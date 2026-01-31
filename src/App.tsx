@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Minus } from 'lucide-react';
 import { useColorScheme } from '@dotrly/sdk';
 import icon from '../assets/icon.png';
